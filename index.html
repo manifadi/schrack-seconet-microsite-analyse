@@ -313,6 +313,7 @@ footer {
       <div class="filter-group">
         <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">Alle</button>
         <button type="button" class="filter-btn" data-filter="vorauerfriends" aria-pressed="false">VFC</button>
+        <button type="button" class="filter-btn" data-filter="mutor" aria-pressed="false">Mutor</button>
         <button type="button" class="filter-btn" data-filter="offline" aria-pressed="false">Offline</button>
         <button type="button" class="filter-btn" data-filter="onlineWithoutVorauerfriends" aria-pressed="false">Andere</button>
       </div>
@@ -348,6 +349,7 @@ const hosts = [
   "idpsop.schrack-seconet.com",
   "inotes.schrack-seconet.com",
   "inside.schrack-seconet.com",
+  "integral-evoxx.com",
   "integral-imap.schrack-seconet.com",
   "licenses-test.schrack-seconet.com",
   "licenses.schrack-seconet.com",
@@ -358,6 +360,7 @@ const hosts = [
   "modern-healthcare.schrack-seconet.com",
   "new-era.schrack-seconet.com",
   "new-era2021.schrack-seconet.com",
+  "next-level.care",
   "news.schrack-seconet.com",
   "notes-p.wien.schrack-seconet.com",
   "pcvisit.schrack-seconet.com",
@@ -399,11 +402,11 @@ const vorauerfriendsSet = new Set([
   "forallthatmatters.schrack-seconet.com",
   "future.schrack-seconet.com",
   "inside.schrack-seconet.com",
-  "integral-imap.schrack-seconet.com",
-  "modern-healthcare.schrack-seconet.com",
+  "integral-evoxx.com",
   "new-era2021.schrack-seconet.com",
   "new-era.schrack-seconet.com",
   "news.schrack-seconet.com",
+  "next-level.care",
   "www.schrack-seconet.com",          /* Falls nicht in hosts-Liste, bleibt einfach ohne Auswirkung */
   "serviceportal-test.schrack-seconet.com",
   "serviceportal.schrack-seconet.com",
@@ -417,6 +420,14 @@ const vorauerfriendsSet = new Set([
   "training.schrack-seconet.com",
   "wesion.schrack-seconet.com",
   "www-test.schrack-seconet.com"
+]);
+
+const mutor = new Set([
+  "showroom-test.schrack-seconet.com",
+  "showroom.schrack-seconet.com",
+  "solutions.schrack-seconet.com",
+  "integral-imap.schrack-seconet.com",
+  "modern-healthcare.schrack-seconet.com"
 ]);
 
 /* DOM Referenzen */
@@ -493,6 +504,8 @@ function currentBaseList() {
   switch (activeFilter) {
     case 'vorauerfriends':
       return hosts.filter(h => vorauerfriendsSet.has(h));
+    case 'mutor':
+      return hosts.filter(h => mutor.has(h));
     case 'offline':
       return hosts.filter(h => statusCache[h] === 'offline');
     case 'onlineWithoutVorauerfriends':
